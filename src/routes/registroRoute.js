@@ -5,6 +5,8 @@ var registroController = require("../controllers/registroController")
 
 router.get("/", registroController.FormRender);
 
+router.post("/post", registroController.FormGetPost);
+
 
 
 module.exports = router;

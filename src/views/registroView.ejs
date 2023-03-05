@@ -1,13 +1,83 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registro</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+        }
+
+        .full-page {
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
 
 </head>
+
 <body>
-    <h1>HOLAO</h1>
+
+    <section class="h-100">
+        <header class="container h-100">
+            <div class="d-flex align-items-center justify-content-center h-100">
+                <div class="d-flex flex-column">
+
+                    <div class="card" style="width: 330px">
+                        <div class="card-header">
+                            ¡Crea una cuenta nueva!
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <form action="./post" method="post">
+
+                                    <div class="col">
+                                        <!-- Nombre -->
+                                        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" name="nUser" placeholder="Ingresa tu nombre">
+                                        <!-- Apellido -->
+                                        <label for="exampleInputEmail1" class="form-label">Apellidos</label>
+                                        <input type="text" class="form-control" name="aUser" placeholder="Ingresa tus apellidos">
+                                        <!-- Nombre usuario -->
+                                        <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>
+                                        <input type="text" name="uUser" class="form-control"
+                                            placeholder="Ingresa tu nombre de usuario">
+                                    </div>
+
+                                    <div class="col">
+                                        <!-- Correo electronico -->
+                                        <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
+                                        <input type="email" name="cUser" class="form-control"
+                                            placeholder="Incresa tu correo electronico">
+                                        <!-- Contraseña -->
+                                        <label for="exampleInputEmail1" class="form-label">Contraseña</label>
+                                        <input type="password" class="form-control" name="pUser" placeholder="Ingresa tu cotraseña">
+                                        <!-- Confirmar contraseña -->
+                                        <label for="exampleInputEmail1" class="form-label">Confirmar contraseña</label>
+                                        <input type="password" class="form-control"
+                                            placeholder="Confirma tu contraseña">
+
+                                    </div>
+                                    <button type="submit" class="btn btn-info mt-2">Registrarse</button>
+                                </form>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+    </section>
+
 </body>
+
 </html>

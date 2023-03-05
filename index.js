@@ -1,22 +1,27 @@
 const express = require('express');
 var path = require("path");
-
+const bodyParser = require('body-parser');
+const axios = require('axios')
 //const path = require('path');
 
 const app = express();
-app.set('port', 3000);
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
 
+
+app.set('port', 3000);
 //Uso de rutas
 var registroRouter= require("./src/routes/registroRoute")
 app.use("/registro", registroRouter);
 
-// var userRouter= require("./src/routes/userRoute");
-// app.use("/user", userRouter);
+
 
 app.set('views', __dirname + '/src/views');
 app.set('view engine', 'ejs');
-
 app.use(express.static(path.join(__dirname, "/public")));
+
 
 
 app.listen(app.get('port'), () => {
