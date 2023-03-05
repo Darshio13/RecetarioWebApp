@@ -1,4 +1,7 @@
 const express = require('express');
+var path = require("path");
+
+//const path = require('path');
 
 const app = express();
 app.set('port', 3000);
@@ -12,6 +15,9 @@ app.use("/registro", registroRouter);
 
 app.set('views', __dirname + '/src/views');
 app.set('view engine', 'ejs');
+
+app.use(express.static(path.join(__dirname, "/public")));
+
 
 app.listen(app.get('port'), () => {
     console.log('Listening on port ', app.get('port'));
