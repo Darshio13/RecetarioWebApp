@@ -38,12 +38,18 @@
                                     <div class="col">
                                         <!-- Nombre -->
                                         <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" name="nUser" pattern="[A-Za-z]" required
-                                            placeholder="Ingresa tu nombre">
+                                        <input type="text" class="form-control" name="nUser" required
+                                            placeholder="Ingresa tu nombre"
+                                            onkeydown="return /[a-z, ]/i.test(event.key)"
+                                            onblur="if (this.value == '') {this.value = '';}"
+                                            onfocus="if (this.value == '') {this.value = '';}">
                                         <!-- Apellido -->
                                         <label for="exampleInputEmail1" class="form-label">Apellidos</label>
-                                        <input type="text" class="form-control" name="aUser" pattern="[A-Za-z]" required
-                                            placeholder="Ingresa tus apellidos">
+                                        <input type="text" class="form-control" name="aUser" required
+                                            placeholder="Ingresa tus apellidos"
+                                            onkeydown="return /[a-z, ]/i.test(event.key)"
+                                            onblur="if (this.value == '') {this.value = '';}"
+                                            onfocus="if (this.value == '') {this.value = '';}">
                                         <!-- Nombre usuario -->
                                         <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>
                                         <input type="text" name="uUser" class="form-control" maxlength="25" required
