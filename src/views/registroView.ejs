@@ -103,6 +103,19 @@
                 console.log('Form submission cancelled.');
                 event.preventDefault();
             }
+            else {
+                event.preventDefault();
+                swal({
+                    title: "Todo correcto.",
+                    text: "Se te enviara un correo para confirmar la cuenta.",
+                    icon: "success",
+                })
+                    .then((value) => {
+                        if (value == true) {
+                            element.submit();
+                        }
+                    });
+            }
 
             // actual logic, e.g. validate the form
         });
