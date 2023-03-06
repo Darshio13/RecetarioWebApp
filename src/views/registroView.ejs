@@ -38,13 +38,15 @@
                                     <div class="col">
                                         <!-- Nombre -->
                                         <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" name="nUser" placeholder="Ingresa tu nombre">
+                                        <input type="text" class="form-control" name="nUser" pattern="[A-Za-z]" required
+                                            placeholder="Ingresa tu nombre">
                                         <!-- Apellido -->
                                         <label for="exampleInputEmail1" class="form-label">Apellidos</label>
-                                        <input type="text" class="form-control" name="aUser" placeholder="Ingresa tus apellidos">
+                                        <input type="text" class="form-control" name="aUser" pattern="[A-Za-z]" required
+                                            placeholder="Ingresa tus apellidos">
                                         <!-- Nombre usuario -->
                                         <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>
-                                        <input type="text" name="uUser" class="form-control"
+                                        <input type="text" name="uUser" class="form-control" maxlength="25" required
                                             placeholder="Ingresa tu nombre de usuario">
                                     </div>
 
@@ -52,14 +54,15 @@
                                         <!-- Correo electronico -->
                                         <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
                                         <input type="email" name="cUser" class="form-control"
-                                            placeholder="Incresa tu correo electronico">
+                                            placeholder="Incresa tu correo electronico" required>
                                         <!-- Contraseña -->
                                         <label for="exampleInputEmail1" class="form-label">Contraseña</label>
-                                        <input type="password" class="form-control" name="pUser" placeholder="Ingresa tu cotraseña">
+                                        <input type="password" class="form-control" name="pUser"
+                                            placeholder="Ingresa tu cotraseña" minlength="8" required id="p1">
                                         <!-- Confirmar contraseña -->
                                         <label for="exampleInputEmail1" class="form-label">Confirmar contraseña</label>
-                                        <input type="password" class="form-control"
-                                            placeholder="Confirma tu contraseña">
+                                        <input type="password" class="form-control" placeholder="Confirma tu contraseña"
+                                            required id="p2">
 
                                     </div>
                                     <button type="submit" class="btn btn-info mt-2">Registrarse</button>
@@ -77,6 +80,27 @@
             </div>
         </header>
     </section>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+
+        const element = document.querySelector('form');
+        element.addEventListener('submit', event => {
+
+            p1 = document.getElementById("p1");
+            p2 = document.getElementById("p2");
+            if (p1.value != p2.value) {
+                swal({
+                    title: "Las contraseñas no coinciden",
+                    icon: "warning",
+                });
+                console.log('Form submission cancelled.');
+                event.preventDefault();
+            }
+
+            // actual logic, e.g. validate the form
+        });
+    </script>
 
 </body>
 
