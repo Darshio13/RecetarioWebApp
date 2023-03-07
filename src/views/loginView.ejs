@@ -1,0 +1,118 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+        }
+
+        .full-page {
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <section class="h-100">
+        <header class="container h-100">
+            <div class="d-flex align-items-center justify-content-center h-100">
+                <div class="d-flex flex-column">
+
+                    <div class="card" style="width: 330px">
+                        <div class="card-header">
+                            Iniciar sesion
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <form action="login/post" method="post">
+
+                                    <div class="col">
+                                        <!-- Nombre usuario -->
+                                        <label class="form-label">Nombre de usuario</label>
+                                        <input type="text" class="form-control" name="username" required
+                                            placeholder="Ingresa tu nombre de usuario">
+                                        <!-- Contraseña -->
+                                        <label for="exampleInputEmail1" class="form-label">Contraseña</label>
+                                        <input type="password" class="form-control" name="password" required
+                                            placeholder="Ingresa tus apellidos">
+
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-info mt-4">Iniciar sesion</button>
+                                        <br>
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <a href="https://recetariowebapp.onrender.com/registro">¿No tienes una cuenta?
+                                            Crea una aqui</a>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+    </section>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        var alerta = '<%=validacion%>';
+        var captcha = '<%=contador%>';
+
+        console.log(captcha);
+        if (alerta) {
+
+
+            if (alerta == '1') {
+                //alert("No se pudo iniciar sesion");
+                Swal.fire(
+                'No se pudo iniciar sesion.',
+                'Las credenciales no coinciden.',
+                'error')
+                
+
+            }
+            if (alerta == '2') {
+                Swal.fire(
+                'No se pudo iniciar sesion.',
+                'Su cuenta no se encuentra verificada.',
+                'error')
+            }
+
+            if (captcha>=5) {//CAPTCHA DESPUES DE 5 INTENTOS
+                Swal.fire({
+                    title: '5 intentos fallidos. Valida lo siguiente para continuar',
+                    html: '<div id="recaptcha"></div>',
+                    didOpen: () => {
+                        grecaptcha.render('recaptcha', {
+                            'sitekey': '6LdvplUUAAAAAK_Y5M_wR7s-UWuiSEdVrv8K-tCq'
+                        })
+                    },
+                    preConfirm: function () {
+                        if (grecaptcha.getResponse().length === 0) {
+                            Swal.showValidationMessage(`Please verify that you're not a robot`)
+                        }
+                    }
+                })
+            }
+        }
+
+        
+    </script>
+
+
+</body>
+
+</html>

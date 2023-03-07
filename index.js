@@ -14,7 +14,9 @@ app.use(bodyParser.json())
 app.set('port', 3000);
 //Uso de rutas
 var registroRouter= require("./src/routes/registroRoute")
+var loginRouter = require("./src/routes/loginRoute");
 app.use("/registro", registroRouter);
+app.use("/login", loginRouter);
 
 
 
