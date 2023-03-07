@@ -13,16 +13,39 @@
 <body>
     <script>
         window.onload = (event) => {
-            swal({
-                    title: "Correo confirmado",
-                    text: "Ya puede inciar sesion con sus credenciales",
-                    icon: "success",
-                })
-                    .then((value) => {
-                        if (value == true) {
-                            element.submit();
-                        }
-                    });
+            var bandera = "<%=ban%>"
+            console.log(bandera);
+            if (bandera=='false')
+            {
+                swal({
+                        title: "Correo caducado",
+                        text: "Tendras que ingresar tus datos en el registro de nuevo.",
+                        icon: "error",
+                    })
+                        .then((value) => {
+                            if (value == true) {
+                                console.log("closing window");
+                                // Simulate an HTTP redirect:
+                                window.location.replace("https://recetariowebapp.onrender.com/registro");
+                            }
+                        });
+            }
+            else
+            {
+                
+                swal({
+                        title: "Correo confirmado",
+                        text: "Ya puede inciar sesion con sus credenciales.",
+                        icon: "success",
+                    })
+                        .then((value) => {
+                            if (value == true) {
+                                console.log("closing window");
+                                window.close();
+                            }
+                        });
+
+            }
         };
     </script>
 </body>
