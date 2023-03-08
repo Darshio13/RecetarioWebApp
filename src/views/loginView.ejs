@@ -65,15 +65,6 @@
             </div>
         </header>
     </section>
-    <script
-        src="https://www.google.com/recaptcha/enterprise.js?render=6LenUuEkAAAAAGM4ZU4O-Vh-u_mKxp6HWhPg_Qc2"></script>
-    <script>
-        grecaptcha.enterprise.ready(function () {
-            grecaptcha.enterprise.execute('6LenUuEkAAAAAGM4ZU4O-Vh-u_mKxp6HWhPg_Qc2', { action: 'login' }).then(function (token) {
-
-            });
-        });
-    </script>
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -87,27 +78,26 @@
             if (alerta == '1') {
                 //alert("No se pudo iniciar sesion");
                 Swal.fire(
-                    'No se pudo iniciar sesion.',
-                    'Las credenciales no coinciden.',
-                    'error')
-
+                'No se pudo iniciar sesion.',
+                'Las credenciales no coinciden.',
+                'error')
+                
 
             }
             if (alerta == '2') {
                 Swal.fire(
-                    'No se pudo iniciar sesion.',
-                    'Su cuenta no se encuentra verificada.',
-                    'error')
+                'No se pudo iniciar sesion.',
+                'Su cuenta no se encuentra verificada.',
+                'error')
             }
 
-            if (captcha >= 5) {//CAPTCHA DESPUES DE 5 INTENTOS
-
+            if (captcha>=5) {//CAPTCHA DESPUES DE 5 INTENTOS
                 Swal.fire({
                     title: '5 intentos fallidos. Valida lo siguiente para continuar',
                     html: '<div id="recaptcha"></div>',
                     didOpen: () => {
                         grecaptcha.render('recaptcha', {
-                            'sitekey': '6LenUuEkAAAAAOVqvkq4NMzZoEeK_OQv_EEOuPo6 '
+                            'sitekey': '6LemgeEkAAAAACPS3I3bBkN5psQf1ElIF8iuvE-R'
                         })
                     },
                     preConfirm: function () {
@@ -119,7 +109,7 @@
             }
         }
 
-
+        
     </script>
 
 
