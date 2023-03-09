@@ -15,8 +15,10 @@ app.set('port', 3000);
 //Uso de rutas
 var registroRouter= require("./src/routes/registroRoute")
 var loginRouter = require("./src/routes/loginRoute");
+var homeRouter= require("./src/routes/homeRoute");
 app.use("/registro", registroRouter);
 app.use("/login", loginRouter);
+app.use("/home", homeRouter)
 
 
 

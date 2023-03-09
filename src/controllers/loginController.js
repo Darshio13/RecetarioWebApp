@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 var contador=0;
-
+//Renderizar formulario de login
 exports.FormRender = (req, res) => {
     console.log(req.query.valid);
     //Primeravez que si ingresa al login
@@ -22,7 +22,7 @@ exports.FormRender = (req, res) => {
         
     }
 }
-
+//Obtener sesion login
 exports.getQuery = (req, res) => {
     console.log(contador);
     axios.get(`https://apitestrecetario.onrender.com/user/login/${req.body.username}/${req.body.password}`).then(resp => {
@@ -34,7 +34,8 @@ exports.getQuery = (req, res) => {
         }
 
         if (resp.data[0].estatus_confirmacion == 1) {
-            console.log("Sesion iniciada")
+            res.redirect("/Home")
+
         }
         if (resp.data[0].estatus_confirmacion ==0)
         {
@@ -64,4 +65,41 @@ exports.getQuery = (req, res) => {
 
 
     })
+}
+//Renderizar formulario para obtener el nombre de usuario
+exports.recoverAcconut = (req, res) => {
+    res.render('recoverAccount');
+}
+
+//Hacer query de para enviar el correo
+exports.recoverAccountPost = (req, res) => {
+    console.log("El correo es ", req.body.correo)
+    axios({
+        method: 'post',
+        url: 'https://apitestrecetario.onrender.com/user/changePassword/',
+        data:{
+            email:req.body.correo
+        }
+     });
+
+     res.redirect("/login/SetNewPassword")
+}
+
+//Renderizar formulario para cambiar la contraseña
+
+exports.setPassword = (req, res) => {
+    res.render('changePasswordView');
+}
+
+exports.ChangePassword = (req, res) => {
+    console.log(req.body)
+    axios({
+        method: 'put',
+        url: 'https://apitestrecetario.onrender.com/user/cambiarPassword',
+        data:{
+            userName:req.body.usuario,
+            password:req.body.password
+        }
+     });
+    res.redirect('/login');
 }

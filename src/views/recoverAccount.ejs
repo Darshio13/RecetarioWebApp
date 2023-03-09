@@ -1,0 +1,89 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar cuenta</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+        }
+
+        .full-page {
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <section class="h-100">
+        <header class="container h-100">
+            <div class="d-flex align-items-center justify-content-center h-100">
+                <div class="d-flex flex-column">
+
+                    <div class="card" style="width: 330px">
+                        <div class="card-header">
+                            Restaurar cuenta
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <form action="login/RecoverUsername" method="post">
+
+                                    <div class="col">
+                                        <!-- CORREO -->
+                                        <label class="form-label">Ingresa tu correo electronico</label>
+                                        <input type="text" class="form-control" name="correo" required
+                                            placeholder="Ingresa tu nombre de usuario">
+
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-info mt-4">Enviar correo</button>
+                                        <br>
+                                    </div>
+
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+    </section>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        const element = document.querySelector('form');
+        element.addEventListener('submit', event => {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Se te enviará un correo con el nombre de usuario para que puedas cambiar la contraseña',
+                didOpen: function () {
+                    Swal.showLoading()
+                    // AJAX request simulated with setTimeout
+                    setTimeout(function () {
+                        element.submit();
+                        Swal.close()
+                    }, 5000)
+                }
+            })
+            console.log('Form submission cancelled.');
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>
